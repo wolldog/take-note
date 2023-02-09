@@ -1,6 +1,12 @@
 [
     {
-        "title":"Test Title",
-        "text":"Test text"
+        "title": "Call John",
+        "text": "Arrange meeting for Friday",
+        "note_id": "d86c0c9a-aee2-4c44-98fa-ab54ad35c6e7"
+    },
+    {
+        "title": "Dinner",
+        "text": "Food",
+        "note_id": "db37ef24-0a4c-44ca-b5b5-d439e9219816"
     }
 ]
