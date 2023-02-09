@@ -7,6 +7,11 @@ const app = express();
 //Include 'static' route
 app.use(express.static(path.join(__dirname, 'public')));
 
+// Route for notes.html
+app.get('/notes', (req, res) =>
+  res.sendFile(path.join(__dirname, 'public/notes.html'))
+);
+
 //Listen  
 const PORT = process.env.PORT || 5000
 
