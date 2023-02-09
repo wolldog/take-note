@@ -40,7 +40,7 @@ app.post('/api/notes', (req, res) => {
     };
     // readAndAppend (see fsUtils) reads and appends db.json with new notes
     readAndAppend(newNote, './db/db.json');
-    res.json(`Note added successfully 🚀`);
+    return res.json(true);
   } else {
     res.error('Error in adding note');
   }
@@ -58,6 +58,7 @@ app.delete('/api/notes/:note_id', (req, res) => {
       const filteredResult = result.filter((note) => note.note_id !== noteId);   
       console.log(filteredResult)
       writeToFile('./db/db.json', filteredResult)
+      return res.json(true);
     });
 });
 
