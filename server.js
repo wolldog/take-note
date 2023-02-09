@@ -12,6 +12,11 @@ app.get('/notes', (req, res) =>
   res.sendFile(path.join(__dirname, 'public/notes.html'))
 );
 
+// GET route to retreive all notes from db.json
+app.get('/api/notes', (req, res) => {
+    readFromFile('./db/db.json').then((data) => res.json(JSON.parse(data)));
+  });
+
 //Listen  
 const PORT = process.env.PORT || 5000
 
