@@ -46,6 +46,20 @@ app.post('/api/notes', (req, res) => {
   }
 });
 
+// DELETE Route for note by note_id
+
+app.delete('/api/notes/:note_id', (req, res) => {
+  const noteId = req.params.note_id;
+  readFromFile('./db/db.json')
+    .then((data) => {
+      const result = JSON.parse(data)
+      const store = result.filter((note) => note.note_id !== noteId);   
+      console.log(store)
+      writeToFile('./db/db.json', store)
+    });
+});
+
+
 //Listen  
 const PORT = process.env.PORT || 5000
 
