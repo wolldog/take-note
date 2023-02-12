@@ -58,7 +58,6 @@ app.delete('/api/notes/:note_id', (req, res) => {
     .then((data) => {
       const result = JSON.parse(data)
       const filteredResult = result.filter((note) => note.note_id !== noteId);   
-      console.log(filteredResult)
       writeToFile('./db/db.json', filteredResult)
       //return true to acknowledge receipt
       return res.json(true);
