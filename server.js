@@ -23,7 +23,8 @@ app.get('/notes', (req, res) =>
   res.sendFile(path.join(__dirname, 'public/notes.html'))
 );
 
-//Routes for api/notes
+//--api routes--
+
 // GET route to retreive all notes from db.json
 app.get('/api/notes', (req, res) => {
     readFromFile('./db/db.json').then((data) => res.json(JSON.parse(data)));
@@ -40,6 +41,7 @@ app.post('/api/notes', (req, res) => {
     };
     // readAndAppend (see fsUtils) reads and appends db.json with new notes
     readAndAppend(newNote, './db/db.json');
+    // return true to acknowledege receipt
     return res.json(true);
   } else {
     res.error('Error in adding note');
@@ -58,6 +60,7 @@ app.delete('/api/notes/:note_id', (req, res) => {
       const filteredResult = result.filter((note) => note.note_id !== noteId);   
       console.log(filteredResult)
       writeToFile('./db/db.json', filteredResult)
+      //return true to acknowledge receipt
       return res.json(true);
     });
 });
